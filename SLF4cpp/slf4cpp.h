@@ -1,0 +1,49 @@
+﻿#pragma once
+
+#include "slf_log_provider.h"
+#include "slf_main.h"
+#include "slf_format.h"
+#include "slf_string.h"
+
+
+#define SLF4CPP_INIT(type)\
+SLF4cpp::slf_main::slf4cpp_init(type)
+
+#define SLF4CPP_PREFFIX(preffix)\
+SLF4cpp::slf_main::slf4cpp_init(type)
+
+
+#define SLF4CPP_IMPL_DEBUG(...)\
+do {\
+SLF4cpp::slf_format format;\
+SLF4cpp::slf_string log = format.format(__VA_ARGS__);\
+SLF4cpp::slf_main::write_log(SLF4cpp::slf_log_level::slf_log_level_debug, log);\
+} while(0)
+
+
+#define SLF4CPP_IMPL_INFO(...)\
+do {\
+SLF4cpp::slf_format format;\
+SLF4cpp::slf_string log = format.format(__VA_ARGS__);\
+SLF4cpp::slf_main::write_log(SLF4cpp::slf_log_level::slf_log_level_info, log);\
+} while(0)
+
+
+#define SLF4CPP_IMPL_WARN(...)\
+do {\
+SLF4cpp::slf_format format;\
+SLF4cpp::slf_string log = format.format(__VA_ARGS__);\
+SLF4cpp::slf_main::write_log(SLF4cpp::slf_log_level::slf_log_level_warn, log);\
+} while(0)
+
+
+#define SLF4CPP_IMPL_ERROR(...)\
+do {\
+SLF4cpp::slf_format format;\
+SLF4cpp::slf_string log = format.format(__VA_ARGS__);\
+SLF4cpp::slf_main::write_log(SLF4cpp::slf_log_level::slf_log_level_error, log);\
+} while(0)
+
+
+#define SLF4CPP(level) SLF4CPP_IMPL_##level
+
