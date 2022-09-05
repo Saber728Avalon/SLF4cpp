@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <iostream>
+#include <math.h>
 #include "slf_string.h"
 #include "config.h"
 
@@ -292,14 +293,14 @@ namespace SLF4cpp
 	slf_string writeFloat(double value) {
 		slf_string strRst;
 
-		if (isnan(value)) return strRst;
+		//if (isnan(value)) return strRst;
 
 		if (value < 0.0) {
 			putchar('-');
 			value = -value;
 		}
 
-		if (isinf(value)) return strRst;
+		//if (isinf(value)) return strRst;
 
 		uint32_t integralPart, decimalPart;
 		int16_t exponent;

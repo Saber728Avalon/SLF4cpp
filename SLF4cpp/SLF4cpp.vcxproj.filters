@@ -57,6 +57,9 @@
     <ClInclude Include="slf_time_format.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="slf_enum.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

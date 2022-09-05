@@ -2,19 +2,11 @@
 #include "slf_string.h"
 #include "slf_log_provider.h"
 #include "slf_format.h"
+#include "slf_time_format.h"
+#include "slf_enum.h"
 
 namespace SLF4cpp
 {
-	enum slf_log_level
-	{
-		slf_log_level_debug,
-		slf_log_level_info,
-		slf_log_level_warn,
-		slf_log_level_error,
-
-		slf_log_level_count
-	};
-
 	class slf_main
 	{
 	public:
@@ -29,7 +21,7 @@ namespace SLF4cpp
 		// yyyy-mm-dd HH:mm:ss.SSS level pid
 		static int slfcpp_prefix(slf_string::PROTOTYPE *pPrefix)
 		{
-
+			return m_timeFormat.analyze(pPrefix);
 		}
 
 		//
@@ -48,33 +40,35 @@ namespace SLF4cpp
 			m_pLogProvider = pLogProvider;
 		}
 
-		static void write_log(slf_log_level nLevel,  const slf_string &log)
+		static void write_log(slf_log_level nLevel,  slf_string &log)
 		{
+			slf_string strFormatLog = m_timeFormat.format_time(log, nLevel);
+			strFormatLog.append('\n');
 			if (NULL != m_pLogProvider)
 			{
 				switch (nLevel)
 				{
 				case slf_log_level::slf_log_level_debug:
 				{
-					m_pLogProvider->write_debug(log);
+					m_pLogProvider->write_debug(strFormatLog);
 				}
 				break;
 
 				case slf_log_level::slf_log_level_info:
 				{
-					m_pLogProvider->write_info(log);
+					m_pLogProvider->write_info(strFormatLog);
 				}
 				break;
 
 				case slf_log_level::slf_log_level_warn:
 				{
-					m_pLogProvider->write_warn(log);
+					m_pLogProvider->write_warn(strFormatLog);
 				}
 				break;
 
 				case slf_log_level::slf_log_level_error:
 				{
-					m_pLogProvider->write_error(log);
+					m_pLogProvider->write_error(strFormatLog);
 				}
 				break;
 
@@ -86,8 +80,10 @@ namespace SLF4cpp
 
 	private:
 		static slf_log_provider *m_pLogProvider;
+		static slf_time_foramt m_timeFormat;
 	};
 
 	slf_log_provider* slf_main::m_pLogProvider = NULL;
+	slf_time_foramt slf_main::m_timeFormat;
 }
 

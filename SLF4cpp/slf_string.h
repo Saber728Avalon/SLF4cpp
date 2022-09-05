@@ -107,17 +107,31 @@ namespace SLF4cpp
 		basic_string& operator = (basic_string &src)
 		{
 			int nSrcSize = src.length();
-			free_new_alloc(nSrcSize);
-			_Traits::copy(m_pBuffer, src.c_str(), nSrcSize);
-			m_nPos += nSrcSize;
+			int nAlignSize = align(nSrcSize);
+			Elem *pBuffer = string_allloc(nAlignSize);
+			_Traits::copy(pBuffer, src.c_str(), nSrcSize);
+			if (NULL != m_pBuffer)
+			{
+				deallocate(m_pBuffer);
+			}
+			m_nPos = nSrcSize;
+			m_pBuffer = pBuffer;
+			m_nCap = nAlignSize;
 			return *this;
 		}
 		basic_string& operator = (const Elem *pSrc)
 		{
 			int nSrcSize = _Traits::length(pSrc);
-			free_new_alloc(nSrcSize);
-			_Traits::copy(m_pBuffer, pSrc, nSrcSize);
-			m_nPos += nSrcSize;
+			int nAlignSize = align(nSrcSize);
+			Elem *pBuffer = string_allloc(nAlignSize);
+			_Traits::copy(pBuffer, pSrc, nSrcSize);
+			if (NULL != m_pBuffer)
+			{
+				deallocate(m_pBuffer);
+			}
+			m_nPos = nSrcSize;
+			m_nCap = nAlignSize;
+			m_pBuffer = pBuffer;
 			return *this;
 		}
 		basic_string& operator += (basic_string &src)

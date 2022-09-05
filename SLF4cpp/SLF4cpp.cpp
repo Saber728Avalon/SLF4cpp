@@ -5,6 +5,7 @@
 #include "slf4cpp.h"
 #include "slf_format.h"
 #include "slf_string.h"
+#include "slf_time_format.h"
 #include <assert.h>
 #include "templae_func.h"
 #include <vector>
@@ -127,7 +128,7 @@ void TestFormat()
 
 	//float
 	strRst = format.format("xxxx {020.2} {8.3} {08.3} {}, {08.5} {} xxxx", 14789.98f, 99.99999, 99.99999, -1, 14789.98f,  "yyyyy  aaaa", 'c'); //参数多于描述，应该不出现
-	assert(strRst == "xxxx 00000000000000014789.98     100.000 00000100.000 -1, 00014789.98047 yyyyy  aaaa xxxx");
+	assert(strRst == "xxxx 00000000000000014789.98      100.000 00000100.000 -1, 00014789.98047 yyyyy  aaaa xxxx");
 
 	//test log
 	SLF4CPP(DEBUG)("xxxx{x 0 4 4} {x 0 4 4} {x 0 4} {}xxxx", 14789, 25565, 37889, -1, "yyyyy  aaaa", 'c'); //参数多于描述，应该不出现
@@ -136,11 +137,32 @@ void TestFormat()
 
 void TestLog()
 {
+	SLF4CPP(DEBUG)("1234");
+	SLF4CPP(DEBUG)("{}", 1234);
+	SLF4CPP(INFO)("{}", "asdfawertqeart");
+	SLF4CPP(WARN)("{}", "2345463546");
+	SLF4CPP(ERROR)("{}", "hgukigyu fdgthysd fty");
+}
+
+void TestFormatTime()
+{
+	SLF4cpp::slf_string strLog="1234", strTimeLog1, strTimeLog2;
+	SLF4cpp::slf_time_foramt timeFormat1, timeFormat2;
+	timeFormat1.analyze("[yyyy-MM-dd HH:mm:ss.SSS] {level} [tid]");
+	strTimeLog1 = timeFormat1.format_time(strLog, SLF4cpp::slf_log_level::slf_log_level_debug);
+
+
+
+	timeFormat2.analyze("[yyyy-MM-dd HH:mm:ss.SSS] {level}");
+	strTimeLog2 = timeFormat2.format_time(strLog, SLF4cpp::slf_log_level::slf_log_level_error);
+	//assert(strTimeLog2 == "[2022-09-06 02:22:46.566] {DEBUG}");
+	return;
 }
 
 int main()
 {
 	SLF4CPP_INIT(0);
+	SLF4CPP_PREFFIX("[yyyy-MM-dd HH:mm:ss.SSS] {level} [tid] ");
 	SLF4cpp::slf_log_provider_stdout xxx;
 
 	float f = 200.5f;
@@ -154,6 +176,8 @@ int main()
 	test_cast_16();
 	test_cast_32();
 	test_cast_64();
+
+	TestFormatTime();
     return 0;
 }
 

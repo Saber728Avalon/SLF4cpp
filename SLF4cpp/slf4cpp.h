@@ -1,16 +1,19 @@
 ﻿#pragma once
 
+#include "slf_enum.h"
 #include "slf_log_provider.h"
 #include "slf_main.h"
 #include "slf_format.h"
 #include "slf_string.h"
 
 
+//初始化SLF4cpp
 #define SLF4CPP_INIT(type)\
 SLF4cpp::slf_main::slf4cpp_init(type)
 
+//初始化SLF4cpp日志前缀
 #define SLF4CPP_PREFFIX(preffix)\
-SLF4cpp::slf_main::slf4cpp_init(type)
+SLF4cpp::slf_main::slfcpp_prefix(preffix)
 
 
 #define SLF4CPP_IMPL_DEBUG(...)\
