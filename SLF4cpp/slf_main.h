@@ -10,6 +10,7 @@ namespace SLF4cpp
 	class slf_main
 	{
 	public:
+		//初始化日志系统
 		static int slf4cpp_init(int nType)
 		{
 			slf_format::InitFormat();
@@ -18,13 +19,14 @@ namespace SLF4cpp
 			return 0;
 		}
 
+		//设置日志前缀串
 		// yyyy-mm-dd HH:mm:ss.SSS level pid
 		static int slfcpp_prefix(slf_string::PROTOTYPE *pPrefix)
 		{
 			return m_timeFormat.analyze(pPrefix);
 		}
 
-		//
+		//替换日志的框架
 		static int replace_log_provider(slf_log_provider *pLogProvider)
 		{
 			int nRet = 0;

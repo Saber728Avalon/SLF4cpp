@@ -343,5 +343,7 @@ namespace SLF4cpp
 	typedef basic_string<wchar_t, char_traits<wchar_t>> slf_string;
 #elif defined(SLF4CPP_USE_UTF32)
 	typedef basic_string<uint32_t, char_traits<uint32_t>> slf_string;
+#else
+	typedef basic_string<char, char_traits<char>> slf_string;
 #endif
 }
