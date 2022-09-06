@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+#include "config.h"
 #include "slf_enum.h"
 #include "slf_log_provider.h"
 #include "slf_main.h"
@@ -15,6 +16,9 @@ SLF4cpp::slf_main::slf4cpp_init(type)
 #define SLF4CPP_PREFFIX(preffix)\
 SLF4cpp::slf_main::slfcpp_prefix(preffix)
 
+//设置新的日志框架
+#define SLF4CPP_SET_LOG_PROVIDER(provider)\
+SLF4cpp::slf_main::replace_log_provider(provider)
 
 #define SLF4CPP_IMPL_DEBUG(...)\
 do {\

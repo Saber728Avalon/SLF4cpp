@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "config.h"
 #include "slf_string.h"
 #include "slf_log_provider.h"
 #include "slf_format.h"
@@ -37,7 +38,7 @@ namespace SLF4cpp
 				{
 					return nRet;
 				}
-				delete[] m_pLogProvider;
+				delete m_pLogProvider;
 			}
 			m_pLogProvider = pLogProvider;
 		}
@@ -45,7 +46,9 @@ namespace SLF4cpp
 		static void write_log(slf_log_level nLevel,  slf_string &log)
 		{
 			slf_string strFormatLog = m_timeFormat.format_time(log, nLevel);
+#if defined(LOG_END_RETURN)
 			strFormatLog.append('\n');
+#endif
 			if (NULL != m_pLogProvider)
 			{
 				switch (nLevel)

@@ -4,6 +4,7 @@ project( SLF4cpp
 	LANGUAGES C CXX)
 
 include_directories(../SLF4cpp)
+include_directories(../Simple)
 
 #生成调试用exe
 OPTION(BUILD_TEST_EXECUTABLES "build exe" ON)
@@ -22,6 +23,7 @@ set(SLE4cpp_HDRS
 	../SLF4cpp/slf4cpp.h
 	../SLF4cpp/templae_func.h
 )
+
 
 add_executable(TestSLF4cpp SLF4cpp.cpp 
 	stdafx.cpp ${SLE4cpp_HDRS})

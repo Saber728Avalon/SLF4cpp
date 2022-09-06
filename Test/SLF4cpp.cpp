@@ -144,6 +144,27 @@ void TestLog()
 	SLF4CPP(ERROR)("{}", "hgukigyu fdgthysd fty");
 }
 
+#if defined(TEST_ADAPTOR)
+#include "plog_provider.h"
+#include "easyloggingpp_provider.h"
+
+void TestLogAdaptor()
+{
+	//SLF4cpp::slf_log_provider_plog *pProvier = new SLF4cpp::slf_log_provider_plog;
+	SLF4cpp::slf_log_provider_plog *pProvier = new SLF4cpp::slf_log_provider_plog;
+	pProvier->init();
+	SLF4CPP_SET_LOG_PROVIDER(pProvier);
+}
+
+#else 
+void TestLogAdaptor()
+{
+	SLF4cpp::slf_log_provider_file *pProvier = new SLF4cpp::slf_log_provider_file;
+	pProvier->init();
+	SLF4CPP_SET_LOG_PROVIDER(pProvier);
+}
+#endif
+
 void TestFormatTime()
 {
 	SLF4cpp::slf_string strLog="1234", strTimeLog1, strTimeLog2;
@@ -164,6 +185,7 @@ int main()
 	SLF4CPP_INIT(0);
 	SLF4CPP_PREFFIX("[yyyy-MM-dd HH:mm:ss.SSS] {level} [tid] ");
 	SLF4cpp::slf_log_provider_stdout xxx;
+	TestLogAdaptor();
 
 	float f = 200.5f;
 	float *pxxx = &f;
@@ -178,6 +200,8 @@ int main()
 	test_cast_64();
 
 	TestFormatTime();
+
+	
     return 0;
 }
 
