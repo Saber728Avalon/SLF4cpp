@@ -23,8 +23,8 @@ class MyLogPlatform : public slf_log_provider
 auto ptr = new MyLogPlatform();    
 replace_log_provider(ptr);     
     
-3.日志末尾是否增加\n宏
-主要是解决日志是否需要换行问题，如果日志框架不换行可以启动该功能 	
+3.日志末尾是否增加\n宏            
+主要是解决日志是否需要换行问题，如果日志框架不换行可以启动该功能        	
 LOG_END_RETURN    
         
            
