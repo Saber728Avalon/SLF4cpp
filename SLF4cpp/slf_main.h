@@ -43,6 +43,7 @@ namespace SLF4cpp
 			m_pLogProvider = pLogProvider;
 		}
 
+		//根据日志登记输出日志
 		static void write_log(slf_log_level nLevel,  slf_string &log)
 		{
 			slf_string strFormatLog = m_timeFormat.format_time(log, nLevel);
@@ -81,6 +82,12 @@ namespace SLF4cpp
 					break;
 				}
 			}
+		}
+
+		static void write_log_func_line(slf_log_level nLevel,  slf_string &log, slf_string &line)
+		{
+			log = line + log;
+			return write_log(nLevel, log);
 		}
 
 	private:

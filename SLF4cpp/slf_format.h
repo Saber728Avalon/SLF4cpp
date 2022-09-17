@@ -502,6 +502,59 @@ namespace SLF4cpp
 		strRst.append(strNext);
 		return  std::move(strRst);
 	}
+	template <typename T, typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7, typename T8, typename T9
+	, typename T10, typename T11, typename T12, typename T13, typename T14, typename T15, typename T16, typename T17>
+	slf_string slf_to_string_args(const slf_string::PROTOTYPE *_Format, const AnalyzeParam analyzeParam[], int nMaxParamCount, int nPos
+		, const T& value, const T1& value1, const T2& value2, const T3& value3, const T4& value4, const T5& value5, const T6& value6, const T7& value7
+		, const T8& value8, const T9& value9, const T10& value10, const T11& value11, const T12& value12, const T13& value13, const T14& value14
+		, const T15& value15, const T16& value16, const T17& value17)
+	{
+		SLF_STRING_ARGS;
+		slf_string strNext = slf_to_string_args(_Format, analyzeParam, nMaxParamCount, nPos += 1, value1, value2, value3, value4, value5, value6
+			, value7, value8, value9, value10, value11, value12, value13, value14, value15, value16, value17);
+		strRst.append(strNext);
+		return  std::move(strRst);
+	}
+	template <typename T, typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7, typename T8, typename T9
+	, typename T10, typename T11, typename T12, typename T13, typename T14, typename T15, typename T16, typename T17, typename T18>
+	slf_string slf_to_string_args(const slf_string::PROTOTYPE *_Format, const AnalyzeParam analyzeParam[], int nMaxParamCount, int nPos
+		, const T& value, const T1& value1, const T2& value2, const T3& value3, const T4& value4, const T5& value5, const T6& value6, const T7& value7
+		, const T8& value8, const T9& value9, const T10& value10, const T11& value11, const T12& value12, const T13& value13, const T14& value14
+		, const T15& value15, const T16& value16, const T17& value17, const T18& value18)
+	{
+		SLF_STRING_ARGS;
+		slf_string strNext = slf_to_string_args(_Format, analyzeParam, nMaxParamCount, nPos += 1, value1, value2, value3, value4, value5, value6
+			, value7, value8, value9, value10, value11, value12, value13, value14, value15, value16, value17, value18);
+		strRst.append(strNext);
+		return  std::move(strRst);
+	}
+	template <typename T, typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7, typename T8, typename T9
+	, typename T10, typename T11, typename T12, typename T13, typename T14, typename T15, typename T16, typename T17, typename T18, typename T19>
+	slf_string slf_to_string_args(const slf_string::PROTOTYPE *_Format, const AnalyzeParam analyzeParam[], int nMaxParamCount, int nPos
+		, const T& value, const T1& value1, const T2& value2, const T3& value3, const T4& value4, const T5& value5, const T6& value6, const T7& value7
+		, const T8& value8, const T9& value9, const T10& value10, const T11& value11, const T12& value12, const T13& value13, const T14& value14
+		, const T15& value15, const T16& value16, const T17& value17, const T18& value18, const T19& value19)
+	{
+		SLF_STRING_ARGS;
+		slf_string strNext = slf_to_string_args(_Format, analyzeParam, nMaxParamCount, nPos += 1, value1, value2, value3, value4, value5, value6
+			, value7, value8, value9, value10, value11, value12, value13, value14, value15, value16, value17, value18, value19);
+		strRst.append(strNext);
+		return  std::move(strRst);
+	}
+	template <typename T, typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7, typename T8, typename T9
+	, typename T10, typename T11, typename T12, typename T13, typename T14, typename T15, typename T16, typename T17, typename T18, typename T19
+	, typename T20>
+	slf_string slf_to_string_args(const slf_string::PROTOTYPE *_Format, const AnalyzeParam analyzeParam[], int nMaxParamCount, int nPos
+		, const T& value, const T1& value1, const T2& value2, const T3& value3, const T4& value4, const T5& value5, const T6& value6, const T7& value7
+		, const T8& value8, const T9& value9, const T10& value10, const T11& value11, const T12& value12, const T13& value13, const T14& value14
+		, const T15& value15, const T16& value16, const T17& value17, const T18& value18, const T19& value19, const T20& value20)
+	{
+		SLF_STRING_ARGS;
+		slf_string strNext = slf_to_string_args(_Format, analyzeParam, nMaxParamCount, nPos += 1, value1, value2, value3, value4, value5, value6
+			, value7, value8, value9, value10, value11, value12, value13, value14, value15, value16, value17, value18, value19, value20);
+		strRst.append(strNext);
+		return  std::move(strRst);
+	}
 #endif
 
 #endif
@@ -718,6 +771,61 @@ namespace SLF4cpp
 			int nParamCount = format_internal(_Format, analyzeParam, DEF_FORMAT_MAX_ITEM);
 			strRst = slf_to_string_args(_Format, analyzeParam, nParamCount, 0, value1, value2, value3, value4, value5, value6, value7, value8, value10
 				, value11, value12, value13, value15, value16);
+			return std::move(strRst);
+		}
+		template <typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7, typename T8, typename T9, typename T10
+		, typename T11, typename T12, typename T13, typename T14, typename T15, typename T16, typename T17>
+		slf_string format(const slf_string::PROTOTYPE *_Format, const T1 &value1, const T2 &value2, const T3 &value3
+			, const T4 &value4, const T5 &value5, const T6 &value6, const T7 &value7, const T8 &value8, const T9 &value9, const T10 &value10
+			, const T11 &value11, const T12 &value12, const T13 &value13, const T14 &value14, const T15 &value15, const T16 &value16, const T17 &value17)
+		{
+			slf_string strRst = _Format;
+			AnalyzeParam analyzeParam[DEF_FORMAT_MAX_ITEM];
+			int nParamCount = format_internal(_Format, analyzeParam, DEF_FORMAT_MAX_ITEM);
+			strRst = slf_to_string_args(_Format, analyzeParam, nParamCount, 0, value1, value2, value3, value4, value5, value6, value7, value8, value10
+				, value11, value12, value13, value15, value16, value17);
+			return std::move(strRst);
+		}
+		template <typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7, typename T8, typename T9, typename T10
+		, typename T11, typename T12, typename T13, typename T14, typename T15, typename T16, typename T17, typename T18>
+		slf_string format(const slf_string::PROTOTYPE *_Format, const T1 &value1, const T2 &value2, const T3 &value3
+			, const T4 &value4, const T5 &value5, const T6 &value6, const T7 &value7, const T8 &value8, const T9 &value9, const T10 &value10
+			, const T11 &value11, const T12 &value12, const T13 &value13, const T14 &value14, const T15 &value15, const T16 &value16, const T17 &value17
+			, const T18 &value18)
+		{
+			slf_string strRst = _Format;
+			AnalyzeParam analyzeParam[DEF_FORMAT_MAX_ITEM];
+			int nParamCount = format_internal(_Format, analyzeParam, DEF_FORMAT_MAX_ITEM);
+			strRst = slf_to_string_args(_Format, analyzeParam, nParamCount, 0, value1, value2, value3, value4, value5, value6, value7, value8, value10
+				, value11, value12, value13, value15, value16, value17, value18);
+			return std::move(strRst);
+		}
+		template <typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7, typename T8, typename T9, typename T10
+		, typename T11, typename T12, typename T13, typename T14, typename T15, typename T16, typename T17, typename T18, typename T19>
+		slf_string format(const slf_string::PROTOTYPE *_Format, const T1 &value1, const T2 &value2, const T3 &value3
+			, const T4 &value4, const T5 &value5, const T6 &value6, const T7 &value7, const T8 &value8, const T9 &value9, const T10 &value10
+			, const T11 &value11, const T12 &value12, const T13 &value13, const T14 &value14, const T15 &value15, const T16 &value16, const T17 &value17
+			, const T18 &value18, const T19 &value19)
+		{
+			slf_string strRst = _Format;
+			AnalyzeParam analyzeParam[DEF_FORMAT_MAX_ITEM];
+			int nParamCount = format_internal(_Format, analyzeParam, DEF_FORMAT_MAX_ITEM);
+			strRst = slf_to_string_args(_Format, analyzeParam, nParamCount, 0, value1, value2, value3, value4, value5, value6, value7, value8, value10
+				, value11, value12, value13, value15, value16, value17, value18, value19);
+			return std::move(strRst);
+		}
+		template <typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7, typename T8, typename T9, typename T10
+		, typename T11, typename T12, typename T13, typename T14, typename T15, typename T16, typename T17, typename T18, typename T19, typename T20>
+		slf_string format(const slf_string::PROTOTYPE *_Format, const T1 &value1, const T2 &value2, const T3 &value3
+			, const T4 &value4, const T5 &value5, const T6 &value6, const T7 &value7, const T8 &value8, const T9 &value9, const T10 &value10
+			, const T11 &value11, const T12 &value12, const T13 &value13, const T14 &value14, const T15 &value15, const T16 &value16, const T17 &value17
+			, const T18 &value18, const T19 &value19, const T20 &value20)
+		{
+			slf_string strRst = _Format;
+			AnalyzeParam analyzeParam[DEF_FORMAT_MAX_ITEM];
+			int nParamCount = format_internal(_Format, analyzeParam, DEF_FORMAT_MAX_ITEM);
+			strRst = slf_to_string_args(_Format, analyzeParam, nParamCount, 0, value1, value2, value3, value4, value5, value6, value7, value8, value10
+				, value11, value12, value13, value15, value16, value17, value18, value19, value20);
 			return std::move(strRst);
 		}
 #endif// _MSC_VER > 1600

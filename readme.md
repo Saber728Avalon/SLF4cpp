@@ -13,7 +13,14 @@ SLF4CPP(ERROR)("{}", "hgukigyu fdgthysd fty")
          
 SLF4CPP(INFO)("{} {}", "asdfawertqeart", 1234);  
 SLF4CPP(INFO)("a={} b={}", a, b);  
-               
+                  
+输出代码的函数名和代码行数      
+SLF4CPPL(DEBUG)("{}", "TEst Line");         
+SLF4CPPL(WARN)("{}", "TEst Line");          
+SLF4CPPL(INFO)("{}", "TEst Line");          
+SLF4CPPL(ERROR)("{}", "TEst Line");         
+				  
+			   
 2.增加添加日志框架支持       
 直接继承 slf_log_provider,可以参考simple目录     
      
@@ -38,8 +45,23 @@ UTF32 : SLF4CPP_USE_UTF32 Linux对于unicode编码的支持
 5.日志时间格式化		   
 [yyyy-MM-dd HH:mm:ss.SSS] {level} [tid]		   
 默认是不添加日志的时间前缀的		   
-		   
-5.支持VS2010及其以上		   
-
-
+yyy-MM-dd HH:mm:ss.SSS  日志时间     
+level 日志级别     
+tid 线程号      
+          
+6.支持VS2010及其以上		   
+             
+          
+            
+7.日志样板         
+下面是一个日志的简单输出样式，方便大家查看       
+[2022-09-08 10:25:43.343] {DEBUG} [21052] xxxx14789 25565 37889 -1xxxx        
+[2022-09-08 10:25:43.343] {DEBUG} [21052] xxxx14789 -1 yyyyy  aaaa 99             
+[2022-09-08 10:25:43.343] {DEBUG} [21052]              
+[2022-09-08 10:25:43.343] {DEBUG} [21052] 1234             
+[2022-09-08 10:25:43.343] { INFO} [21052] asdfawertqeart               
+[2022-09-08 10:25:43.343] { WARN} [21052] 2345463546           
+[2022-09-08 10:25:43.343] {ERROR} [21052] hgukigyu fdgthysd fty            
+[2022-09-08 10:28:44.524] {DEBUG} [21628] [main(193)] TEst Line           
+[2022-09-08 10:28:44.524] {DEBUG} [21628] [main(194)] TEst Line                 
 

@@ -159,7 +159,7 @@ void TestLogAdaptor()
 #else 
 void TestLogAdaptor()
 {
-	SLF4cpp::slf_log_provider_file *pProvier = new SLF4cpp::slf_log_provider_file;
+	SLF4cpp::slf_log_provider_stdout *pProvier = new SLF4cpp::slf_log_provider_stdout;
 	pProvier->init();
 	SLF4CPP_SET_LOG_PROVIDER(pProvier);
 }
@@ -190,6 +190,10 @@ int main()
 	float f = 200.5f;
 	float *pxxx = &f;
 
+	SLF4CPPL(DEBUG)("{}", "TEst Line");
+	SLF4CPPL(WARN)("{}", "TEst Line");
+	SLF4CPPL(INFO)("{}", "TEst Line");
+	SLF4CPPL(ERROR)("{}", "TEst Line");
 
 	TestFormat();
 	TestLog();

@@ -337,13 +337,13 @@ namespace SLF4cpp
 		int m_nPos;
 	};
 
-#if defined(SLF4CPP_USE_CHAR)
+#if defined(SLF4CPP_USE_CHAR) //uint8字符
 	typedef basic_string<char, char_traits<char>> slf_string;
-#elif defined(SLF4CPP_USE_UTF16)
+#elif defined(SLF4CPP_USE_UTF16)//uint16字符
 	typedef basic_string<wchar_t, char_traits<wchar_t>> slf_string;
-#elif defined(SLF4CPP_USE_UTF32)
+#elif defined(SLF4CPP_USE_UTF32)//uint32字符
 	typedef basic_string<uint32_t, char_traits<uint32_t>> slf_string;
-#else
+#else//默认是uint8字符
 	typedef basic_string<char, char_traits<char>> slf_string;
 #endif
 }
