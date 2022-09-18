@@ -242,6 +242,8 @@ namespace SLF4cpp
 			m_strPattern = pPrefix;
 			std::vector<NodeFormatType> vectNodeFormatType;
 
+			m_vectNode.clear();
+
 			//这样避免写不同编码定义字符串会不同
 			slf_string::PROTOTYPE slfBufYear[] = { 'y', 'y', 'y', 'y', '\0'};
 			slf_string::PROTOTYPE slfBufMonth[] = { 'M', 'M', '\0'};

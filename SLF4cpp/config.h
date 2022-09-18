@@ -16,6 +16,12 @@
 #define REMOVE_LOG_INFO
 #endif
 
+//屏蔽debug日志
+#if !defined(REMOVE_DEBUG_LOG_INFO)
+#else
+#define REMOVE_DEBUG_LOG_INFO
+#endif
+
 //设置字符表示单位
 #if !defined(SLF4CPP_USE_CHAR) && !defined(SLF4CPP_USE_UTF16) && !defined(SLF4CPP_USE_UTF32) 
 #define SLF4CPP_USE_CHAR

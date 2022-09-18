@@ -23,13 +23,16 @@ SLF4cpp::slf_main::slfcpp_prefix(preffix)
 SLF4cpp::slf_main::replace_log_provider(provider)
 
 
-
+#if !defined(REMOVE_DEBUG_LOG_INFO)
 #define SLF4CPP_IMPL_DEBUG(...)\
 do {\
 SLF4cpp::slf_format format;\
 SLF4cpp::slf_string log = format.format(__VA_ARGS__);\
 SLF4cpp::slf_main::write_log(SLF4cpp::slf_log_level::slf_log_level_debug, log);\
 } while(0)
+#else
+#define SLF4CPP_IMPL_DEBUG(...) {}
+#endif
 
 
 #define SLF4CPP_IMPL_INFO(...)\
@@ -60,7 +63,7 @@ SLF4cpp::slf_main::write_log(SLF4cpp::slf_log_level::slf_log_level_error, log);\
 #define SLF4CPP(level) SLF4CPP_IMPL_##level
 
 
-
+#if !defined(REMOVE_DEBUG_LOG_INFO)
 #define SLF4CPP_LINE_IMPL_DEBUG(...)\
 do {\
 SLF4cpp::slf_format format;\
@@ -68,6 +71,9 @@ SLF4cpp::slf_string log = format.format(__VA_ARGS__);\
 SLF4cpp::slf_string line = format.format("[{}({})] ", __FUNCTION__, __LINE__);\
 SLF4cpp::slf_main::write_log_func_line(SLF4cpp::slf_log_level::slf_log_level_debug, log, line);\
 } while(0)
+#else
+#define SLF4CPP_LINE_IMPL_DEBUG(...) {}
+#endif
 
 #define SLF4CPP_LINE_IMPL_INFO(...)\
 do {\
