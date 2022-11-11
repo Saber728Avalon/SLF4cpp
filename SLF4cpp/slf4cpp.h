@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "config.h"
+#include "slf_memory.h"
 #include "slf_enum.h"
 #include "slf_log_provider.h"
 #include "slf_main.h"

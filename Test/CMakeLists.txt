@@ -1,7 +1,9 @@
-cmake_minimum_required(VERSION 2.8)
-
 project( SLF4cpp 
 	LANGUAGES C CXX)
+
+cmake_minimum_required(VERSION 2.8)
+
+
 
 include_directories(../SLF4cpp)
 include_directories(../Simple)

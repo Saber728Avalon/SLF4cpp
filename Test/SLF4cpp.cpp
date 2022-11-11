@@ -180,6 +180,29 @@ void TestFormatTime()
 	return;
 }
 
+class AXXX : public SLF4cpp::memory_alloc
+{
+public:
+	AXXX()
+		:m(10)
+		, n(11)
+	{
+	}
+
+private:
+	int m;
+	int n;
+};
+
+void TestNew()
+{
+	AXXX *pAx = new AXXX();
+	AXXX *pAxx = new AXXX[10];
+
+	delete pAx;
+	delete[] pAxx;
+}
+
 int main()
 {
 	SLF4CPP_INIT(0);
@@ -205,6 +228,7 @@ int main()
 
 	TestFormatTime();
 
+	TestNew();
 	
     return 0;
 }

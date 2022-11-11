@@ -1,9 +1,59 @@
 ﻿#pragma once
 #include <iostream>
 #include "slf_utils.h"
+#include <malloc.h>
+
+//分配内存
+inline void* SLF_MALLCO(size_t size)
+{
+	return malloc(size);
+}
+//释放内存
+inline void SLF_FREEE(void *p)
+{
+	free(p);
+}
+
+//重载new
+static void* operator new(size_t size) throw(std::bad_alloc)
+{
+	void *pMem = SLF_MALLCO(size);
+	if (NULL == pMem)
+	{
+		// to do assert
+	}
+	return pMem;
+}
+//重载new []
+static void *operator new[](size_t count) throw(std::bad_alloc)
+{
+	return operator new (count);
+}
+
+//重载delete
+//static void operator delete(void *rawMemory) throw(std::bad_alloc)
+//{
+//	if (rawMemory == 0) return;
+//	free(rawMemory);
+//}
+static void operator delete(void *rawMemory)
+{
+	if (rawMemory == 0) return;
+	SLF_FREEE(rawMemory);
+}
+//重载delete []
+static void operator delete[](void *pMem, size_t count) throw(std::bad_alloc)
+{
+	return operator delete(pMem);
+}
+static void operator delete[](void *pMem)
+{
+	return operator delete(pMem);
+}
 
 namespace SLF4cpp
 {
+	
 
 #define SLF4CPP_ALLOC_DEF_NAME 0x34464C53
 #define SLF4CPP_ALLOC_ELEM_NAME 0x34464C54
@@ -24,7 +74,8 @@ namespace SLF4cpp
 		{
 			m_unName = x.GetName();
 		}
-
+		
+		//分配内存
 		char *allocate(int nSize)
 		{
 			nSize = sizeof(uint32_t) + nSize;
@@ -38,6 +89,7 @@ namespace SLF4cpp
 			return pBuffer + sizeof(uint32_t);
 		}
 
+		//释放内存
 		void deallocate(char *pBuf)
 		{
 			if (NULL == pBuf)
@@ -55,13 +107,13 @@ namespace SLF4cpp
 			delete[] pRealStart;
 		}
 
-		uint32_t GetName() const
+		virtual uint32_t GetName() const
 		{
 			return m_unName;
 		}
 
 		// Used must be carefully
-		void SetName(uint32_t unName)
+		virtual void SetName(uint32_t unName)
 		{
 			m_unName = unName;
 		}
